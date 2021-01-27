@@ -1,0 +1,29 @@
+.grid-container {
+  margin: 20px;
+
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+
+    .logout-btn {
+      border: 1px solid #d6d6d6;
+      border-radius: 30px;
+      width: 100px;
+    }
+  }
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+
+.dashboard-card-content {
+  text-align: center;
+  overflow: auto;
+  height: calc(100% - 40px);
+}

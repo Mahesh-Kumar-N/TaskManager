@@ -1,0 +1,92 @@
+<div >
+  <div *ngIf="item == 'inprogressTask'" >
+    <table #table mat-table class="full-width-table" [dataSource]="inprogressTask" matSort aria-label="Elements">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+    <!-- Description of the task-->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+          <td mat-cell *matCellDef="let row">{{row.description}}</td>
+        </ng-container>
+  <!-- button to complete the task-->
+    <ng-container matColumnDef="completeTask">
+      <th mat-header-cell *matHeaderCellDef ></th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button color="primary" (click)="completeTask(row)">complete Task</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedInProgressTaskColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedInProgressTaskColumns;"></tr>
+  </table>
+</div>
+<div *ngIf="item == 'pendingTask'" >
+  <table #table1  mat-table class="full-width-table" [dataSource]="pendingTask" matSort aria-label="Elements">
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let row">{{row.name}}</td>
+  </ng-container>
+  <!-- Description of the task-->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let row">{{row.description}}</td>
+      </ng-container>
+  <!-- Duration-->
+  <ng-container matColumnDef="duration">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
+    <td mat-cell *matCellDef="let row">{{row.duration}}</td>
+  </ng-container>
+  <!-- <ng-container matColumnDef="timeLeft">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Time Left</th>
+    <td mat-cell *matCellDef="let row">todo</td>
+  </ng-container> -->
+   <!-- button to change the status of task into inprogress-->
+  <ng-container matColumnDef="moveToInprogress">
+    <th mat-header-cell *matHeaderCellDef ></th>
+    <td mat-cell *matCellDef="let row">
+      <button mat-button color="primary" (click)="moveToInprogress(row)">Move to inprogress</button>
+    </td>
+  </ng-container>
+   <!-- button to delete the task-->
+  <ng-container matColumnDef="deleteTask">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let row">
+      <button mat-button color="warn" (click)="deleteTask(row)">Delete task</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedPendingTaskColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedPendingTaskColumns;"></tr>
+</table>
+</div>
+<div *ngIf="item == 'completedTask'" >
+  <table #table2 mat-table class="full-width-table" [dataSource]="CompletedTask" matSort aria-label="Elements">
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let row">{{row.name}}</td>
+  </ng-container>
+  <!-- Description of the task-->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let row">{{row.description}}</td>
+      </ng-container>
+  <!-- Duration-->
+  <ng-container matColumnDef="duration">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
+    <td mat-cell *matCellDef="let row">{{row.duration}}</td>
+  </ng-container>
+  <!-- <ng-container matColumnDef="timeTaken">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Time Left</th>
+    <td mat-cell *matCellDef="let row">todo</td>
+  </ng-container> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+</div>

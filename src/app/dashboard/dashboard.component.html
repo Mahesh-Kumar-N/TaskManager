@@ -1,0 +1,23 @@
+<div class="grid-container">
+  <div class="header-section">
+    <h1 class="mat-h1">Dashboard</h1>
+    <button mat-button class="logout-btn" color="accent" (click)="onLogout()">logout</button>
+   
+  </div>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+           </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div *ngIf="(card.id !='createTask')">
+          <app-task-list [item]= "card.id"></app-task-list>
+        </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
